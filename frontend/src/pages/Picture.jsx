@@ -1,0 +1,154 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Import axios for API requests
+import { toast } from "react-toastify"; // Import toast for error messages
+
+const Picture = () => {
+  const [category, setCategory] = useState([]); // State to store selected categories
+  const [subcategory, setSubcategory] = useState([]); // State to store selected subcategories
+  const [products, setProducts] = useState([]); // State to store fetched products
+
+  const getProductData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/product/list"
+      );
+      if (response.data.success) {
+        setProducts(response.data.products); // Set products to state
+      } else {
+        toast.error("Failed to load products");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to load products");
+    }
+  };
+
+  useEffect(() => {
+    getProductData(); // Fetch products when component mounts
+  }, []);
+
+  // Filter products based on selected category and subcategory
+  const filteredProducts = products.filter((product) => {
+    const categoryMatch = category.length
+      ? category.includes(product.category)
+      : true;
+    const subcategoryMatch = subcategory.length
+      ? subcategory.includes(product.subCategory)
+      : true;
+
+    return categoryMatch && subcategoryMatch;
+  });
+
+  const toggleCategory = (e) => {
+    const value = e.target.value;
+    setCategory((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    );
+  };
+
+  const toggleSubcategory = (e) => {
+    const value = e.target.value;
+    setSubcategory((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    );
+  };
+
+  return (
+    <div className="min-h-screen bg-yellow-100 flex">
+      {/** Left side: Filters */}
+      <div className="w-1/4 p-6 bg-yellow-100 border-r-2">
+        <h1 className="text-2xl font-semibold">Filters</h1>
+
+        {/* Category Filter */}
+        <div className="border border-black rounded-lg w-full p-4 mt-4">
+          <h2 className="font-semibold">CATEGORIES</h2>
+          <div className="flex flex-col gap-2">
+            {[
+              "Nature",
+              "Asthetic",
+              "Sports & outdoor",
+              "Group",
+              "Pets",
+              "Education",
+              "Food & Beverages",
+            ].map((categoryName) => (
+              <p key={categoryName} className="flex gap-2">
+                <input
+                  type="checkbox"
+                  value={categoryName}
+                  onChange={toggleCategory}
+                  checked={category.includes(categoryName)}
+                />
+                {categoryName}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {/* Subcategory Filter */}
+        <div className="border border-black rounded-lg w-full p-4 mt-4">
+          <h2 className="font-semibold">TYPE</h2>
+          <div className="flex flex-col gap-2">
+            {[
+              "Modern",
+              "Classic",
+              "Minimalistic",
+              "Retro",
+              "Boho",
+              "Rustic",
+              "Vintage",
+            ].map((subCategoryName) => (
+              <p key={subCategoryName} className="flex gap-2">
+                <input
+                  type="checkbox"
+                  value={subCategoryName}
+                  onChange={toggleSubcategory}
+                  checked={subcategory.includes(subCategoryName)}
+                />
+                {subCategoryName}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/** Right side: Product List */}
+      <div className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-6 gap-6">
+        <h1 className="text-4xl mt-10 font-semibold col-span-4">
+          Our Collections
+        </h1>
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <div
+              key={product._id}
+              className="border rounded-lg p-4 bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <img
+                src={product.image}
+                alt={product.description}
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <h2 className="text-lg mt-4 font-semibold">
+                {product.description}
+              </h2>
+              <p className="text-gray-600 mt-2">Category: {product.category}</p>
+              <p className="text-gray-600 mt-1">
+                SubCategory: {product.subCategory}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p className="col-span-4 text-center text-xl font-semibold text-gray-500">
+            No products found
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Picture;
