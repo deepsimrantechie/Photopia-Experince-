@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+// Use the environment variable or a fallback for development
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +23,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/user/login",
+        `${API_BASE_URL}/api/user/login`, // Use the dynamic API base URL here
         { email, password }
       );
 
@@ -33,7 +37,6 @@ const Login = () => {
         window.localStorage.setItem("username", userName);
         window.localStorage.setItem("authToken", token);
 
-        // Log to verify that values are being stored correctly
         console.log(
           "Stored username in localStorage:",
           window.localStorage.getItem("username")

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+// Use the environment variable or a fallback for development
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,10 +24,11 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/user/register",
-        { username, email, password }
-      );
+      const response = await axios.post(`${API_BASE_URL}/api/user/register`, {
+        username,
+        email,
+        password,
+      });
 
       if (response.data.success) {
         // Store the JWT token and username in localStorage
