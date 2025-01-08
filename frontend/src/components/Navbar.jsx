@@ -47,7 +47,7 @@ const Navbar = () => {
                 <h1 className="cursor-pointer hover:text-gray-300">Company</h1>
                 <Link to="/adding">
                   <button className="bg-white text-black rounded-lg py-1 px-4 hover:bg-gray-200">
-                    Enquiry
+                    Add on
                   </button>
                 </Link>
               </div>
