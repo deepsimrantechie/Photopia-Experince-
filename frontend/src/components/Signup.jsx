@@ -27,8 +27,9 @@ const Signup = () => {
       );
 
       if (response.data.success) {
-        // Store the JWT token in localStorage
+        // Store the JWT token and username in localStorage
         localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("username", username); // Store the username
 
         // Show success message or redirect user
         setMessage("Signup successful! Redirecting...");
