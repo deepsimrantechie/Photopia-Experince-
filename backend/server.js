@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://photopia-experince-frontend.onrender.com" }));
 
 // Make sure the path `/api/user` is used correctly
 app.use("/api/user", userRouter);
