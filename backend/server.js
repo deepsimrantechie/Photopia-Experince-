@@ -12,10 +12,26 @@ connectCloudinary();
 const app = express();
 const port = process.env.PORT || 3000;
 
+const allowedOrigins = [
+  "http://localhost:5173", // Development
+  "https://photopia-experince-frontend.onrender.com", // Production
+];
+
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "https://photopia-experince-frontend.onrender.com" }));
-
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g., Postman, mobile apps)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Origin ${origin} not allowed by CORS`));
+      }
+    },
+    credentials: true, // Enable sending cookies, auth headers, etc.
+  })
+);
 // Make sure the path `/api/user` is used correctly
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);

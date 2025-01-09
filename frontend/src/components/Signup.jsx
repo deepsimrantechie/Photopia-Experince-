@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+// Using the environment variable for the base API URL
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,14 +25,16 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/user/register",
-        { username, email, password }
-      );
+      const response = await axios.post(`${API_BASE_URL}/api/user/register`, {
+        username,
+        email,
+        password,
+      });
 
       if (response.data.success) {
-        // Store the JWT token in localStorage
+        // Store the JWT token and username in localStorage
         localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("username", username); // Store the username
 
         // Show success message or redirect user
         setMessage("Signup successful! Redirecting...");

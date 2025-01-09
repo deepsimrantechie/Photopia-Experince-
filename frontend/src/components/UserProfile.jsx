@@ -6,34 +6,30 @@ const UserProfile = () => {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
-  // Check if the user is logged in by looking for auth token
+  // Check if the user is logged in by looking for the auth token
   const isLoggedIn = () => {
     const token = localStorage.getItem("authToken");
-    return token ? true : false;
+    return !!token; // Return true if token exists
   };
 
   useEffect(() => {
+    // Check login status
     const loggedInStatus = isLoggedIn();
-    console.log("Logged In Status:", loggedInStatus); // Debugging
     setLoggedIn(loggedInStatus);
 
+    // Retrieve the username if logged in
     if (loggedInStatus) {
-      const storedName = localStorage.getItem("username"); // Ensure the correct key name
-      console.log("Stored Name:", storedName); // Debugging
-      if (storedName) {
-        setUserName(storedName);
-      } else {
-        setUserName("User");
-      }
+      const storedName = localStorage.getItem("username");
+      setUserName(storedName || "User"); // Fallback to "User" if no username is found
     } else {
-      setUserName(""); // Clear userName if not logged in
+      setUserName(""); // Clear username if not logged in
     }
-  }, []); // Only run once when the component mounts
+  }, []); // Run only once when the component mounts
 
   const handleLogout = () => {
-    console.log("Logging out..."); // Debugging
+    // Clear localStorage and update state
     localStorage.removeItem("authToken");
-    localStorage.removeItem("username"); // Ensure the correct key name
+    localStorage.removeItem("username");
     setLoggedIn(false);
     setUserName("");
     navigate("/login"); // Redirect to login page
@@ -47,7 +43,7 @@ const UserProfile = () => {
       {/* Section 1 */}
       <section className="bg-white rounded-lg shadow-md px-10 py-8 w-11/12 max-w-3xl text-center">
         <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
-          {userName || "User"} {/* Display userName or fallback to "User" */}
+          {userName || "User"} {/* Display username or fallback to "User" */}
         </h1>
         <p className="text-lg text-gray-600">
           Dear {userName || "User"}, welcome to our website. We're excited to
