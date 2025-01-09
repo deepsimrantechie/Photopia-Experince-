@@ -21,6 +21,7 @@ const allowedOrigins = [
 app.use(express.json());
 app.use(
   cors({
+<<<<<<< HEAD
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g., Postman, mobile apps)
       if (!origin || allowedOrigins.includes(origin)) {
@@ -32,6 +33,14 @@ app.use(
     credentials: true, // Enable sending cookies, auth headers, etc.
   })
 );
+=======
+    origin: "https://photopia-experince-frontend.onrender.com/", // Your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+>>>>>>> 016a09008501861ce8f3b761c2ba3f637054e438
 // Make sure the path `/api/user` is used correctly
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
