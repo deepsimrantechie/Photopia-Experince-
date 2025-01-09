@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"; // Import axios for API requests
 import { toast } from "react-toastify"; // Import toast for error messages
 
+//localhost
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 const Picture = () => {
   const [category, setCategory] = useState([]); // State to store selected categories
   const [subcategory, setSubcategory] = useState([]); // State to store selected subcategories
@@ -9,9 +13,7 @@ const Picture = () => {
 
   const getProductData = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/product/list"
-      );
+      const response = await axios.get(`${API_BASE_URL}/api/product/list`);
       if (response.data.success) {
         setProducts(response.data.products); // Set products to state
       } else {

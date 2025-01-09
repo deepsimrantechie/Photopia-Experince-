@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+//localhost
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 const Adding = () => {
   const [showForm, setShowForm] = useState(false);
@@ -36,7 +39,7 @@ const Adding = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/product/add",
+        `${API_BASE_URL}/api/product/add`,
         formData,
         {
           headers: {

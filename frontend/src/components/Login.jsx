@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+//localhost
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,10 +22,10 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/user/login",
-        { email, password }
-      );
+      const response = await axios.post(`${API_BASE_URL}/api/user/login`, {
+        email,
+        password,
+      });
 
       if (response.data.success) {
         setMessage(response.data.message);
