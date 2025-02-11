@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center bg-yellow-100  px-6">
+      <div className="flex justify-between items-center px-6">
         {/** The first section */}
         <section>
           <Link to="/">
@@ -59,16 +59,14 @@ const Navbar = () => {
         <section className="flex space-x-2 items-center">
           {isLoggedIn() ? (
             // Show logout button if user is logged in
-            <button
-              onClick={handleLogout}
-              className="w-28 h-12 mt-2 bg-red-700 text-white rounded-lg"
-            >
+
+            <button onclick={handleLogout} className="btn glass">
               Logout
             </button>
           ) : (
             // Show login button if user is not logged in
             <Link to="/login">
-              <button className="w-28 h-12 mt-2 bg-red-700 text-white rounded-lg">
+              <button className="btn glass py-2 px-4 border border-black flex ">
                 Login
               </button>
             </Link>

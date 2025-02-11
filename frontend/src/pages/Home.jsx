@@ -3,7 +3,7 @@ import { assets } from "../assets/assets";
 
 const Home = () => {
   return (
-    <div className="bg-yellow-100 min-h-screen">
+    <div className=" min-h-screen">
       <div className="container mx-auto pt-20">
         <h1 className="text-center text-4xl font-semibold">
           Discover And Capture The <br />

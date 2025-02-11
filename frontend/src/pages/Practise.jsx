@@ -4,11 +4,13 @@ import Home from "./Home";
 import Exclusive from "./Exclusive";
 import Discount from "./Discount";
 import Footer from "./Footer";
+import { useThemeStore } from "../../store/useThemeStore";
 
 const Practise = () => {
+  const { theme } = useThemeStore();
   return (
-    <div>
-      <div className="bg-yellow-100">
+    <div className="cursor-pointer" data-theme={theme}>
+      <div className="">
         <Navbar />
         <Home />
       </div>

@@ -61,7 +61,7 @@ const Adding = () => {
   };
 
   return (
-    <div className="bg-yellow-100 min-h-screen flex flex-col items-center pt-20">
+    <div className=" min-h-screen flex flex-col items-center pt-20">
       <div className="text-center">
         <h1 className="text-5xl mb-4">Do You Want to Contribute?</h1>
         <p className="text-lg mb-8">
