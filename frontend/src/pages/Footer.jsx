@@ -29,11 +29,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Logo and Social Links */}
           <div>
-            <img
-              src={assets.logo}
-              alt="Photopiya Logo"
-              className="w-32 mx-auto md:mx-0 mb-4"
-            />
+            <a className="btn btn-ghost text-xl">Photopia</a>
             <h1 className="text-lg text-center md:text-left">We are here</h1>
             <p className="mt-4 text-center md:text-left">Let's connect on:</p>
             <div className="flex justify-center md:justify-start space-x-4 mt-2">

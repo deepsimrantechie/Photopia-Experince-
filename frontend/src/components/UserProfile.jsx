@@ -1,8 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useThemeStore } from "../../store/useThemeStore";
+import { Link } from "react-router-dom";
 
-const THEMES = ["light", "dark"]; // Define valid DaisyUI themes
+const THEMES = [
+  "light",
+  "dark",
+  "cupcake",
+  "bumblebee",
+  "emerald",
+  "corporate",
+  "synthwave",
+  "retro",
+  "cyberpunk",
+  "valentine",
+  "halloween",
+  "garden",
+  "forest",
+  "aqua",
+  "lofi",
+  "pastel",
+  "fantasy",
+  "wireframe",
+  "black",
+  "luxury",
+  "dracula",
+  "cmyk",
+  "autumn",
+  "business",
+  "acid",
+  "lemonade",
+  "night",
+  "coffee",
+  "winter",
+  "dim",
+  "nord",
+  "sunset",
+]; // Define valid DaisyUI themes
 
 const UserProfile = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -56,13 +90,18 @@ const UserProfile = () => {
           Our Features
         </h2>
         <div className="flex flex-wrap gap-4 justify-center">
-          <button className="btn btn-primary">Contact Us</button>
-          <button className="btn btn-secondary">Support Us</button>
+          <button className="btn btn-outline btn-info">Contact us </button>
+          <button className="btn btn-outline btn-success">Support us </button>
 
           {!loggedIn ? (
-            <button className="btn btn-accent">Sign Up</button>
+            <Link to="/login">
+              <button className="btn btn-outline btn-warning">Login</button>
+            </Link>
           ) : (
-            <button onClick={handleLogout} className="btn btn-error">
+            <button
+              onClick={handleLogout}
+              className="btn btn-outline btn-error"
+            >
               Logout
             </button>
           )}

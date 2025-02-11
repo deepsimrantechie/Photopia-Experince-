@@ -29,7 +29,7 @@ const Navbar = () => {
         {/** The first section */}
         <section>
           <Link to="/">
-            <img src={assets.logo} alt="Company Logo" className="w-40 mt-2" />
+            <a className="btn btn-ghost text-xl">Photopia</a>
           </Link>
         </section>
 
@@ -57,27 +57,13 @@ const Navbar = () => {
 
         {/** The third section */}
         <section className="flex space-x-2 items-center">
-          {isLoggedIn() ? (
-            // Show logout button if user is logged in
-
-            <button onclick={handleLogout} className="btn glass">
-              Logout
-            </button>
-          ) : (
-            // Show login button if user is not logged in
-            <Link to="/login">
-              <button className="btn glass py-2 px-4 border border-black flex ">
-                Login
-              </button>
-            </Link>
-          )}
           <Link to="/profile">
             {" "}
-            <img
-              src={assets.p}
-              alt=""
-              className="w-14 h-14 rounded-full border-black border mt-1"
-            />
+            <div class="avatar online placeholder">
+              <div class="bg-neutral text-neutral-content w-16 rounded-full">
+                <span class="text-xl">PF</span>
+              </div>
+            </div>
           </Link>
         </section>
       </div>

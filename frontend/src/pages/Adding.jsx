@@ -76,7 +76,7 @@ const Adding = () => {
       </div>
 
       {showForm && (
-        <div className="w-full max-w-md bg-yellow-200 p-6 rounded-lg shadow-md mb-20">
+        <div className="w-full max-w-md  p-6 rounded-lg shadow-md mb-20">
           <form
             className="flex flex-col gap-4"
             onSubmit={handleSubmit}

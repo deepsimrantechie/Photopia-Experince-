@@ -60,9 +60,9 @@ const Picture = () => {
   };
 
   return (
-    <div className="min-h-screen bg-yellow-100 flex">
+    <div className="min-h-screen flex">
       {/** Left side: Filters */}
-      <div className="w-1/4 p-6 bg-yellow-100 border-r-2">
+      <div className="w-1/4 p-6  border-r-2">
         <h1 className="text-2xl font-semibold">Filters</h1>
 
         {/* Category Filter */}
