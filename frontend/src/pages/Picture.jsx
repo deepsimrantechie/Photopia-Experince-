@@ -84,6 +84,7 @@ const Picture = () => {
                   value={categoryName}
                   onChange={toggleCategory}
                   checked={category.includes(categoryName)}
+                  className="checkbox checkbox-md"
                 />
                 {categoryName}
               </p>
@@ -110,6 +111,7 @@ const Picture = () => {
                   value={subCategoryName}
                   onChange={toggleSubcategory}
                   checked={subcategory.includes(subCategoryName)}
+                  className="checkbox checkbox-md"
                 />
                 {subCategoryName}
               </p>
