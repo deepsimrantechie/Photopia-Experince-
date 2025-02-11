@@ -10,6 +10,7 @@ import instagram from "./instagram.png";
 import logo from "./logo.png";
 import minus from "./minus.png";
 import sunflower from "./sunflower.png";
+import displayphoto from "./displayphoto.png";
 import p from "./p.png";
 export const assets = {
   photo,
@@ -25,4 +26,5 @@ export const assets = {
   minus,
   sunflower,
   p,
+  displayphoto,
 };

@@ -89,10 +89,11 @@ const Adding = () => {
               <label className="block text-gray-700 font-semibold mb-1">
                 Upload Image:
               </label>
+
               <input
                 type="file"
                 name="image" // Make sure the name is 'image' to match formData.append("image", image)
-                className="border rounded-lg p-2 w-full"
+                className="file-input file-input-bordered w-full max-w-xs"
                 onChange={(e) => {
                   if (e.target.files && e.target.files[0]) {
                     setImage(e.target.files[0]);

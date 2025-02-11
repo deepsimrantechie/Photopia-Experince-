@@ -49,53 +49,47 @@ const Exclusive = () => {
             {/* The first section */}
             {currentSection === "section1" && (
               <div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-10">
                   <div className="mt-6">
-                    <img
-                      src={assets.blackcamera}
-                      alt=""
-                      className="w-96 h-96 bg-black"
-                    />
-                    <div className="text-white flex items-center justify-between mt-14">
-                      <div>
-                        <h1>Pro Capture Series</h1>
-                        <p>$73,844</p>
+                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+                      <figure>
+                        <img src={assets.displayphoto} alt="Shoes" />
+                      </figure>
+                      <div className="card-body">
+                        <h2 className="card-title">Camera 1</h2>
+                        <p>Its a dummy preview for camera</p>
+                        <div className="card-actions justify-end">
+                          <button className="btn btn-primary">Buy Now</button>
+                        </div>
                       </div>
-                      <button className="bg-red-700 text-white px-2 py-2 rounded-xl">
-                        Buy Now
-                      </button>
                     </div>
                   </div>
                   <div className="mt-6">
-                    <img
-                      src={assets.Camera2}
-                      alt=""
-                      className="w-full h-auto bg-black"
-                    />
-                    <div className="text-white flex items-center justify-between mt-2">
-                      <div>
-                        <h1>Pro Capture Series</h1>
-                        <p>$73,844</p>
+                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+                      <figure>
+                        <img src={assets.displayphoto} alt="Shoes" />
+                      </figure>
+                      <div className="card-body">
+                        <h2 className="card-title">Camera 2</h2>
+                        <p>Its a dummy preview for camera</p>
+                        <div className="card-actions justify-end">
+                          <button className="btn btn-primary">Buy Now</button>
+                        </div>
                       </div>
-                      <button className="bg-red-700 text-white px-2 py-2 rounded-xl">
-                        Buy Now
-                      </button>
                     </div>
                   </div>
                   <div className="mt-6">
-                    <img
-                      src={assets.Camera3}
-                      alt=""
-                      className="w-full h-auto bg-black mt-16"
-                    />
-                    <div className="text-white flex items-center justify-between mt-6">
-                      <div>
-                        <h1>Pro Capture Series</h1>
-                        <p>$73,844</p>
+                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+                      <figure>
+                        <img src={assets.displayphoto} alt="Shoes" />
+                      </figure>
+                      <div className="card-body">
+                        <h2 className="card-title">Camera 3</h2>
+                        <p>Its a dummy preview for camera </p>
+                        <div className="card-actions justify-end">
+                          <button className="btn btn-primary">Buy Now</button>
+                        </div>
                       </div>
-                      <button className="bg-red-700 text-white px-2 py-2 rounded-xl">
-                        Buy Now
-                      </button>
                     </div>
                   </div>
                 </div>
