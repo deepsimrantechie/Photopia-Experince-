@@ -1,8 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { assets } from "../assets/assets";
+import { toast } from "react-toastify";
 
 const Exclusive = () => {
   const [currentSection, setCurrentSection] = useState("section1");
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    fetchList();
+  }, []); // Fetch the list when the component mounts
+
+  const fetchList = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/shop/list");
+      console.log("Fetched list data", response.data);
+      if (response.data.success) {
+        setList(response.data.ShopProduct || []);
+      } else {
+        toast.error(response.data.error);
+      }
+    } catch (error) {
+      console.log("Error fetching data", error);
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div>
@@ -13,7 +35,6 @@ const Exclusive = () => {
         </h1>
         <div className="ml-4 sm:ml-8 md:ml-10 mt-8 sm:mt-10">
           <nav className="space-x-2 sm:space-x-4">
-            {/* Buttons with dynamic underline */}
             <button
               onClick={() => setCurrentSection("section1")}
               className={`text-white ${
@@ -46,76 +67,109 @@ const Exclusive = () => {
             </button>
           </nav>
           <div>
-            {/* The first section */}
+            {/* Latest Camera Section */}
+            {/* Latest Camera Section */}
             {currentSection === "section1" && (
               <div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-10">
-                  <div className="mt-6">
-                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
-                      <figure>
-                        <img src={assets.displayphoto} alt="Shoes" />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Camera 1</h2>
-                        <p>Its a dummy preview for camera</p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-10">
+                  {list.length > 0 ? (
+                    list.map((item) => (
+                      <div key={item._id} className="bg-white p-4 rounded-lg">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-80 object-cover rounded-lg"
+                        />
+                        <p className="text-black font-semibold text-xl mt-4">
+                          {item.name}
+                        </p>
+                        <p className="text-gray-600">{item.description}</p>
+                        <div className="flex justify-between">
+                          <p className="text-red-600 text-2xl font-bold">
+                            ${item.price}
+                          </p>
+                          <button className="btn mb-4 btn-primary">
+                            Buy Now
+                          </button>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="mt-6">
-                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
-                      <figure>
-                        <img src={assets.displayphoto} alt="Shoes" />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Camera 2</h2>
-                        <p>Its a dummy preview for camera</p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-6">
-                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
-                      <figure>
-                        <img src={assets.displayphoto} alt="Shoes" />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Camera 3</h2>
-                        <p>Its a dummy preview for camera </p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    ))
+                  ) : (
+                    <p className="text-white">No products available</p>
+                  )}
                 </div>
               </div>
             )}
 
-            {/* The second section */}
+            {/* Most Viewed Section */}
             {currentSection === "section2" && (
               <div>
-                <p className="text-white text-lg sm:text-xl">
-                  Most Viewed Content
-                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-10">
+                  {list.length > 0 ? (
+                    list.map((item) => (
+                      <div key={item._id} className="bg-white p-4 rounded-lg">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-80 object-cover rounded-lg"
+                        />
+                        <p className="text-black font-semibold text-xl mt-4">
+                          {item.name}
+                        </p>
+                        <p className="text-gray-600">{item.description}</p>
+                        <div className="flex justify-between">
+                          <p className="text-red-600 text-2xl font-bold">
+                            ${item.price}
+                          </p>
+                          <button className="btn mb-4 btn-primary">
+                            Buy Now
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-white">No products available</p>
+                  )}
+                </div>
               </div>
             )}
 
-            {/* The third section */}
+            {/* Hot Deals Section */}
             {currentSection === "section3" && (
               <div>
-                <p className="text-white text-lg sm:text-xl">
-                  Hot Deals Content
-                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-10">
+                  {list.length > 0 ? (
+                    list.map((item) => (
+                      <div key={item._id} className="bg-white p-4 rounded-lg">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-80 object-cover rounded-lg"
+                        />
+                        <p className="text-black font-semibold text-xl mt-4">
+                          {item.name}
+                        </p>
+                        <p className="text-gray-600">{item.description}</p>
+                        <div className="flex justify-between">
+                          <p className="text-red-600 text-2xl font-bold">
+                            ${item.price}
+                          </p>
+                          <button className="btn mb-4 btn-primary">
+                            Buy Now
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-white">No products available</p>
+                  )}
+                </div>
               </div>
             )}
           </div>
         </div>
-        {/* Section below */}
+
+        {/* Section Below */}
         <div className="flex flex-col-reverse md:flex-row justify-between items-center mt-20 sm:mt-36 mb-20 px-4 sm:px-8 md:px-10">
           <div className="text-center md:text-left">
             <h1 className="text-white text-3xl sm:text-4xl md:text-5xl mt-8">

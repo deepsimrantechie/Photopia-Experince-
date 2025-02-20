@@ -6,6 +6,7 @@ import userRouter from "./Routes/userRouter.js"; // Correct import
 
 import productRouter from "./Routes/productRoute.js";
 import connectCloudinary from "./config/cloudinary.js";
+import ShopRouter from "./Routes/shopRouter.js";
 
 dotenv.config();
 connectCloudinary();
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3000;
 
 const allowedOrigins = [
   "http://localhost:5173", // Development
+  "http://localhost:5174",
   "https://photopia-experince-frontend.onrender.com", // Production
 ];
 
@@ -36,6 +38,7 @@ app.use(
 // Make sure the path `/api/user` is used correctly
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.use("/api/shop", ShopRouter);
 
 // Root endpoint
 app.get("/", (req, res) => {

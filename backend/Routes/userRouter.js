@@ -1,5 +1,9 @@
 import express from "express";
-import { loginUser, registerUser } from "../controllers/userController.js";
+import {
+  adminLogin,
+  loginUser,
+  registerUser,
+} from "../controllers/userController.js";
 import AuthUser from "../middleware/auth.js";
 
 const userRouter = express.Router();
@@ -7,6 +11,7 @@ const userRouter = express.Router();
 // Public routes
 userRouter.post("/register", registerUser);
 userRouter.post("/login", loginUser);
+userRouter.post("/admin", adminLogin);
 
 // Protected routes
 userRouter.get("/profile", AuthUser, (req, res) => {
