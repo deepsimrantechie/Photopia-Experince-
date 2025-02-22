@@ -18,6 +18,7 @@ const allowedOrigins = [
   "http://localhost:5173", // Development
   "http://localhost:5174",
   "https://photopia-experince-frontend.onrender.com", // Production
+  "https://photopia-experince-admin.onrender.com",
 ];
 
 // Middleware
