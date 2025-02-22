@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+const API_BASE_URL =
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -9,13 +10,10 @@ const Login = ({ setToken }) => {
   const onSubmitHandler = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(
-        "http://localhost:3000/api/user/admin",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${API_BASE_URL}/api/user/admin`, {
+        email,
+        password,
+      });
       if (response.data.success) {
         setToken(response.data.success);
       } else {

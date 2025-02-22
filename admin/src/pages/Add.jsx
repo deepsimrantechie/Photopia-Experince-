@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+const API_BASE_URL =
+  "http://localhost:3000" || import.meta.env.VITE_BACKEND_URL;
 
 const Add = ({ token }) => {
   const [image, setImage] = useState(null);
@@ -21,10 +23,11 @@ const Add = ({ token }) => {
       console.log("FormData:", [...formData]); // ✅ Debugging
 
       const response = await axios.post(
-        "http://localhost:3000/api/shop/add",
+        `${API_BASE_URL}/api/shop/add`,
         formData,
         { headers: { token, "Content-Type": "multipart/form-data" } } // ✅ Fixed headers
       );
+      console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
 
       console.log("Response:", response.data); // ✅ Debugging
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+const API_BASE_URL =
+  "http://localhost:3000" || import.meta.env.VITE_BACKEND_URL;
 
 const List = ({ token }) => {
   const [list, setList] = useState([]);
@@ -8,8 +10,9 @@ const List = ({ token }) => {
 
   const fetchList = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/shop/list");
+      const response = await axios.get(`${API_BASE_URL}/api/shop/list`);
       console.log("Fetched List Data:", response.data); // Debugging
+      console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
 
       if (response.data.success) {
         setList(response.data.ShopProduct || []); // ✅ Extract ShopProduct array
@@ -27,7 +30,7 @@ const List = ({ token }) => {
       const token = localStorage.getItem("token"); // ✅ Get token from storage
 
       const response = await axios.post(
-        "http://localhost:3000/api/shop/remove",
+        `${API_BASE_URL}/api/shop/remove`,
         { id },
         { headers: { Authorization: `Bearer ${token}` } } // ✅ Correct format
       );

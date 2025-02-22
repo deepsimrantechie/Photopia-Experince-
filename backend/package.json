@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
+  "homepage": ".",
   "scripts": {
     "postinstall": "echo 'No rebuild necessary for bcryptjs'",
     "start": "node server.js",

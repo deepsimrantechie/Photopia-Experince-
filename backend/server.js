@@ -22,6 +22,7 @@ const allowedOrigins = [
 
 // Middleware
 app.use(express.json());
+app.use(express.static("build"));
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -45,6 +46,10 @@ app.use("/api/cart", cartRouter);
 // Root endpoint
 app.get("/", (req, res) => {
   res.send("API IS WORKING");
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 const startServer = async () => {
