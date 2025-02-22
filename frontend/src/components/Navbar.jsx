@@ -37,7 +37,10 @@ const Navbar = () => {
           <div className="flex items-center justify-center">
             <div className="bg-black rounded-2xl h-12 px-6 flex items-center">
               <div className="text-white flex space-x-8">
-                <h1 className="cursor-pointer hover:text-gray-300">Feature</h1>
+                <Link to="/">
+                  {" "}
+                  <h1 className="cursor-pointer hover:text-gray-300">Home</h1>
+                </Link>
                 <Link
                   to="/picture"
                   className="cursor-pointer hover:text-gray-300"
