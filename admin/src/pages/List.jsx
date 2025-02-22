@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 const API_BASE_URL =
-  "http://localhost:3000" || import.meta.env.VITE_BACKEND_URL;
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 const List = ({ token }) => {
   const [list, setList] = useState([]);
