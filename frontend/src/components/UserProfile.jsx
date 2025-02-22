@@ -92,6 +92,10 @@ const UserProfile = () => {
         <div className="flex flex-wrap gap-4 justify-center">
           <button className="btn btn-outline btn-info">Contact us </button>
           <button className="btn btn-outline btn-success">Support us </button>
+          <Link to="/cart">
+            {" "}
+            <button className="btn btn-outline btn-success">Cart</button>
+          </Link>
 
           {!loggedIn ? (
             <Link to="/login">

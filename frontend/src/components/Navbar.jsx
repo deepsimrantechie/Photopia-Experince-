@@ -9,7 +9,7 @@ const Navbar = () => {
   // Check if user is logged in
   const isLoggedIn = () => {
     const token = localStorage.getItem("authToken");
-    return token ? true : false; // If token exists, the user is logged in
+    return !!token; // Returns true if token exists
   };
 
   const toggleMenu = () => {
@@ -17,34 +17,37 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    // Remove the JWT token
-    localStorage.removeItem("authToken");
-    // Navigate to the login page
-    navigate("/login");
+    localStorage.removeItem("authToken"); // Remove the JWT token
+    navigate("/login"); // Redirect to login page
   };
 
   return (
     <div>
       <div className="flex justify-between items-center px-6">
-        {/** The first section */}
+        {/** First section */}
         <section>
-          <Link to="/">
-            <a className="btn btn-ghost text-xl">Photopia</a>
-          </Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            Photopia
+          </Link>{" "}
+          {/* ✅ Removed <a> inside <Link> */}
         </section>
 
-        {/** The second section */}
+        {/** Second section */}
         <section className="md:block hidden">
           <div className="flex items-center justify-center">
             <div className="bg-black rounded-2xl h-12 px-6 flex items-center">
               <div className="text-white flex space-x-8">
                 <h1 className="cursor-pointer hover:text-gray-300">Feature</h1>
-                <Link to="/picture">
-                  <h1 className="cursor-pointer hover:text-gray-300">
-                    Picture
-                  </h1>
+                <Link
+                  to="/picture"
+                  className="cursor-pointer hover:text-gray-300"
+                >
+                  Picture
                 </Link>
-                <h1 className="cursor-pointer hover:text-gray-300">Company</h1>
+                <Link to="/cart">
+                  {" "}
+                  <h1 className="cursor-pointer hover:text-gray-300">Cart</h1>
+                </Link>
                 <Link to="/adding">
                   <button className="bg-white text-black rounded-lg py-1 px-4 hover:bg-gray-200">
                     Add on
@@ -55,13 +58,15 @@ const Navbar = () => {
           </div>
         </section>
 
-        {/** The third section */}
+        {/** Third section */}
         <section className="flex space-x-2 items-center">
           <Link to="/profile">
-            {" "}
-            <div class="avatar online placeholder">
-              <div class="bg-neutral text-neutral-content w-16 rounded-full">
-                <span class="text-xl">PF</span>
+            <div className="avatar online placeholder">
+              {" "}
+              {/* ✅ Changed 'class' to 'className' */}
+              <div className="bg-neutral text-neutral-content w-16 rounded-full">
+                <span className="text-xl">PF</span>{" "}
+                {/* ✅ Changed 'class' to 'className' */}
               </div>
             </div>
           </Link>

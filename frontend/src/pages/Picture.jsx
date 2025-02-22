@@ -121,32 +121,34 @@ const Picture = () => {
       </div>
 
       {/** Right side: Product List */}
-      <div className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-6 gap-6">
-        <h1 className="text-4xl mt-10 font-semibold col-span-4">
+      <div className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 p-6 gap-6">
+        <h1 className="text-4xl mt-10 font-semibold col-span-full text-center">
           Our Collections
         </h1>
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div
               key={product._id}
-              className="border rounded-lg p-4 bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+              className="border rounded-lg p-4 bg-white shadow-md hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
               <img
                 src={product.image}
                 alt={product.description}
-                className="w-full h-64 object-cover rounded-lg"
+                className="w-full h-48 object-cover rounded-lg transition-transform duration-300 hover:scale-105"
               />
               <h2 className="text-lg mt-4 font-semibold">
                 {product.description}
               </h2>
-              <p className="text-gray-600 mt-2">Category: {product.category}</p>
-              <p className="text-gray-600 mt-1">
+              <p className="text-gray-700 font-medium">
+                Category: {product.category}
+              </p>
+              <p className="text-gray-600">
                 SubCategory: {product.subCategory}
               </p>
             </div>
           ))
         ) : (
-          <p className="col-span-4 text-center text-xl font-semibold text-gray-500">
+          <p className="col-span-full text-center text-xl font-semibold text-gray-500">
             No products found
           </p>
         )}

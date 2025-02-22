@@ -7,6 +7,7 @@ import userRouter from "./Routes/userRouter.js"; // Correct import
 import productRouter from "./Routes/productRoute.js";
 import connectCloudinary from "./config/cloudinary.js";
 import ShopRouter from "./Routes/shopRouter.js";
+import cartRouter from "./Routes/CartRoute.js";
 
 dotenv.config();
 connectCloudinary();
@@ -39,6 +40,7 @@ app.use(
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/shop", ShopRouter);
+app.use("/api/cart", cartRouter);
 
 // Root endpoint
 app.get("/", (req, res) => {
