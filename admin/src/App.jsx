@@ -22,17 +22,18 @@ const App = () => {
         {!token ? (
           <Routes>
             <Route path="/" element={<Login setToken={setToken} />} />
+            <Route path="*" element={<Login setToken={setToken} />} />
           </Routes>
         ) : (
           <>
             <Navbar setToken={setToken} />
             <hr />
-
-            {/* Added flex container for sidebar and content */}
             <div className="flex">
               <Sidebar />
               <div className="flex-1 p-6 text-gray-600 text-base">
                 <Routes>
+                  <Route path="/" element={<List />} />{" "}
+                  {/* Home page when logged in */}
                   <Route path="/add" element={<Add />} />
                   <Route path="/list" element={<List />} />
                   <Route path="/orders" element={<Order />} />
