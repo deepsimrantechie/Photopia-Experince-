@@ -118,9 +118,9 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <FiMapPin className="mt-1 text-primary" />
                 <p className="text-gray-400">
-                  123 Shutter Street, Frameville
+                  132/23 Sector-101,
                   <br />
-                  Snapshot City, Imagistan - 456789
+                  New Delhi, India
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -129,7 +129,7 @@ const Footer = () => {
                   href="tel:+923884789"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  +92 388 4789
+                  +91 990283747
                 </a>
               </div>
               <div className="flex items-center gap-3">
